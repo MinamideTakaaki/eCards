@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<div id="printNum"></div>
+	<div id="printEn"></div>
+	<div id="printJp"></div>
+	<input type="number" id="numSet" min="1" max="100" value="1">
+	<div id="btnStart" onclick="start()">Start</div>
+	<div id="btnNext" onclick="next()">Next</div>
+</body>
+<style>
+	html, body {
+		margin: unset;
+		height: 100%;
+		width: 100%;
+	}
+	#printEn, #printJp, #btnStart, #btnNext {
+		width: 30%;
+		height: 20%;
+		background-color: orange;
+	}
+</style>
+<script type="text/javascript">
+	let startCard=0, nowCard;
+	let mainArray = [['agree', '賛成する'], ['oppose', '～に反対する'], ['advise', '～に忠告する'], ['tip', '助言'], ['discuss', '～について話し合う'], ['blame', '～に責任があるとする'], ['argue', '～と主張する'], ['claim', '～と主張する'], ['complain', '文句を言う'], [	'offer', '～を申し出る']];
+
+	console.log(mainArray[0][0]);
+
+	function start() {
+		// console.log(document.getElementById('numSet').value);
+		startCard = document.getElementById('numSet').value - 1;
+		document.getElementById('printEn').innerHTML = mainArray[startCard][0];
+		document.getElementById('printJp').innerHTML = mainArray[startCard][1];
+		nowCard = startCard;
+	}
+
+	function next() {
+		if (nowCard === undefined) {
+			console.log('null');
+			alert('startを押してください');
+		}
+		else {
+			nowCard+=1;
+			document.getElementById('printEn').innerHTML = mainArray[nowCard][0];
+			document.getElementById('printJp').innerHTML = mainArray[nowCard][1];
+		}
+	}
+</script>
+</html>
